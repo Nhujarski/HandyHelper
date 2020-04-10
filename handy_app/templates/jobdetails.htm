@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        
+        <h1>Hello {{ current_user.first_name }}! These are your job details!</h1>
+        <h3>{{ job.title }}</h3>
+        <ul class="list-group">
+            <li class="list-group-item">{{ job.desc }}</li>
+            <li class="list-group-item">Location: {{ job.location }}</li>
+            <li class="list-group-item">Posted by: {{job.created_by.first_name}}</li>
+            <li class="list-group-item"> Posted on: {{ job.created_at }}</li>
+        </ul>
+        
+        <button class="btn btn-primary"><a href="/dashboard" style="color: white;">Dashboard</a></button>
+        <button class="btn btn-primary"><a href="/logout" style="color: white;">Logout</a></button>
+
+    </body>
+</html>

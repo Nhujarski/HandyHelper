@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+ <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Handy Helper</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1><b>Hello {{ current_user.first_name }}! Lets edit your Job!!</b></h1>
+        {% if request.session.job_error == True %} {% for message in messages %}
+    <p style="color: red;">{{message}}</p>
+    {%endfor%} {% endif %}
+    <div style="width: 500px;">
+
+    <form action="/edit/{{job.id}}" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="">Title: </label>
+            <input type="text" name="title" class="form-control" placeholder="{{job.title}}">
+        </div>
+        <div class="form-group">
+            <label for="">Description: </label>
+            <input type="text" name="desc" class="form-control" placeholder="{{job.desc}}">
+        </div>
+        
+        <div class="form-group">
+            <label for="">Location: </label>
+            <input type="text" name="location" class="form-control" placeholder="{{job.location}}">
+        </div>
+        
+        <button class="btn btn-info">Submit!</button>
+        <button class="btn btn-info"><a href="/dashboard" style="text-decoration: none; color:white">Cancel</a> </button>
+    </form>
+    
+    </div>
+    
+    </body>
+</html>
